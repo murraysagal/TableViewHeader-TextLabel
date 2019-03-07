@@ -39,4 +39,28 @@ Now we have what is expected.
 
 There are many questions about this on stackoverflow. A common answer is to use `sizeToFit()`. So let's try that. 
 
+Change `updateHeaderTitle`: 
 
+    func updateHeader(with title: String) {
+        guard let headerView = tableView.headerView(forSection: 0), let label = headerView.textLabel else {return}
+        headerTitle = title
+        label.text = headerTitle
+        label.sizeToFit()  // add this line
+     }
+
+- run the app and tap on the a row
+
+That's worse. Again, it seems like the label's width is stuck to the original. 
+
+- tap the b row
+
+That's fine.
+
+- tap the a row again. 
+
+That's pretty messed up. It looks like it's trying to fit the label into the width of the last header title. 
+
+- Swipe up to force the header to reload. That's fixes it. 
+
+### Workaround
+One that might work for many
