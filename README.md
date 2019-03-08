@@ -45,7 +45,7 @@ Now we have what is expected.
 
 There are many questions about this on stackoverflow. A common answer is to use `sizeToFit()`. So let's try that. 
 
-In `updateHeaderTitle(...)` uncomment the `sizeToFit()` line and run again.
+In `ViewController.swift` uncomment `sizeToFit()` in `updateHeaderTitle(...)` (line 53) and run again.
 
 - tap on the `a` row
 
@@ -53,7 +53,7 @@ That's worse. Again, it seems like the label's width is stuck to the original.
 
 - tap the `b` row
 
-That's bad. The header title for the `b` row is just the letter `b`. 
+That's works. The header title for the `b` row is just the letter `b`. 
 
 - tap the `a` row again. 
 
@@ -62,4 +62,12 @@ That's pretty messed up. It looks like it's trying to fit the label into the wid
 - Swipe up to force the header to reload. That fixes it. 
 
 ### Workaround
-One workaround that might work in most cases is to set the label's `numberOfLines` attribute. Uncomment the `numberOfLines` line and run again.
+One workaround that might work in some cases is to set the label's `numberOfLines` attribute. Uncomment `numberOfLines` (line 54) and run again.
+
+- tap the `a` row
+
+Not so good. But if you keep tapping it seems to work in all other cases except that the multiline title only shows the first line. 
+
+Apple, can you please fix this. 
+
+
