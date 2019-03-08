@@ -45,7 +45,7 @@ Now we have what is expected.
 
 There are many questions about this on stackoverflow. A common answer is to use `sizeToFit()`. So let's try that. 
 
-In `ViewController.swift` uncomment `sizeToFit()` in `updateHeaderTitle(...)` (line 53) and run again.
+In `ViewController.swift` uncomment `label.sizeToFit()` and run again.
 
 - tap on the `a` row
 
@@ -62,7 +62,7 @@ That's pretty messed up. It looks like it's trying to fit the label into the wid
 - Swipe up to force the header to reload. That fixes it. 
 
 ### Workaround
-One workaround that might work in some cases is to set the label's `numberOfLines` attribute. Uncomment `numberOfLines` (line 54) and run again.
+One workaround that might work in some cases is to set the label's `numberOfLines` attribute. Uncomment `label.numberOfLines = 1` and run again.
 
 - tap the `a` row
 
