@@ -12,15 +12,16 @@ class ViewController: UITableViewController {
 
 
     let model = "abcde".map {return String($0)}
-    let headerTitles = ["a is for apple" + "\n" + "a multiline apple", "b", "c is for can you please fix this", "d is for dumb", "e is for eagerly awaiting"]
+    let headerTitles = ["a is for apple" + "\n" + "a multiline apple", "b", "c is for can you please fix this", "d is for dumb", "e is for eagerly awaiting a fix"]
     let defaultHeaderTitle = "header"
     lazy var headerTitle = defaultHeaderTitle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "TableViewHeader-TextLabel"
+        navigationItem.title = "TableView Header"
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: #selector(reset), for: .valueChanged)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
     }
 
     // MARK: - Table view
@@ -34,7 +35,7 @@ class ViewController: UITableViewController {
         return headerTitle
     }
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Tap any row to change the header. Pull down for the default header."
+        return "Tap any row to change the header. Pull down for the default header. Tap the button for reloadData()."
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -57,6 +58,10 @@ class ViewController: UITableViewController {
     @objc func reset() {
         updateHeader(with: defaultHeaderTitle)
         refreshControl?.endRefreshing()
+    }
+
+    @objc func reload() {
+        tableView.reloadData()
     }
 }
 
