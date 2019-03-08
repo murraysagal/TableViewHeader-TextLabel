@@ -68,6 +68,6 @@ One workaround that might work in some cases is to set the label's `numberOfLine
 
 Not so good. But if you keep tapping it seems to work in all other cases except that the multiline title only shows the first line. 
 
-Apple, can you please fix this. 
+Apple, can you please fix this?
 
 
