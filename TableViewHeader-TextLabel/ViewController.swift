@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UITableViewController {
 
-
     let model = "abcde".map {return String($0)}
     let headerTitles = ["a is for apple" + "\n" + "a multiline apple", "b", "c is for can you please fix this", "d is for dumb", "e is for eagerly awaiting a fix"]
     let defaultHeaderTitle = "header"
@@ -20,7 +19,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "TableView Header"
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: #selector(reset), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(reset), for: .valueChanged)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
     }
 
