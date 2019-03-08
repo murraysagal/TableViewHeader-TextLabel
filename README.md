@@ -62,11 +62,13 @@ That's pretty messed up. It looks like it's trying to fit the label into the wid
 - Swipe up to force the header to reload. That fixes it. 
 
 ### Workaround
-One workaround that might work in some cases is to set the label's `numberOfLines` attribute. Uncomment `label.numberOfLines = 1` and run again.
+One workaround that works for most cases is to set the label's `numberOfLines` attribute. Uncomment `label.numberOfLines = 1` and run again.
 
 - tap the `a` row
 
-Not so good. But if you keep tapping it seems to work in all other cases except that the multiline title only shows the first line. 
+Pretty good. But it's only showing the first line. 
+
+But if your header titles are all one line this works fine. Then just add `.uppercased()` when setting the label text.
 
 Apple, can you please fix this?
 
