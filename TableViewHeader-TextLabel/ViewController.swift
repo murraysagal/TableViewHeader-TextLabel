@@ -50,8 +50,8 @@ class ViewController: UITableViewController {
         guard let headerView = tableView.headerView(forSection: 0), let label = headerView.textLabel else {return}
         headerTitle = title
         label.text = headerTitle
-//        label.sizeToFit()
 //        label.numberOfLines = 1
+//        label.sizeToFit()
     }
 
     @objc func reset() {
