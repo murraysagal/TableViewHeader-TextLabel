@@ -27,37 +27,33 @@ There are two obvious problems...
 
 1. The text is truncated. It appears to be truncated at exactly the length of the default header.
 1. The text is lowercase.
-1. The other problem is that the header title for `a` is actually two lines. 
+1. The other problem is that the header title for `a` is actually two lines. All the others are single line.
 
 - swipe up to force the header to reload. That's how it should look.
 
 - tap the `b` row
 
-This works because the title is shorter than the original. But notice that it's sitting really high. 
+This works because the title is shorter than the one before. But notice that it's sitting really high. 
 
 - tap the `c` row
+
+Notice that it is wrapping to a new line but that's because the previous one was two lines. 
+
 - swipe up to force the header to reload. 
 
 Now we have what is expected. 
 
 There are many questions about this on stackoverflow. A common answer is to use `sizeToFit()`. So let's try that. 
 
-Change `updateHeaderTitle`: 
+In `updateHeaderTitle(...)` uncomment the `sizeToFit()` line and run again.
 
-    func updateHeader(with title: String) {
-        guard let headerView = tableView.headerView(forSection: 0), let label = headerView.textLabel else {return}
-        headerTitle = title
-        label.text = headerTitle
-        label.sizeToFit()  // add this line
-     }
-
-- run the app and tap on the `a` row
+- tap on the `a` row
 
 That's worse. Again, it seems like the label's width is stuck to the original. 
 
 - tap the `b` row
 
-That's fine.
+That's bad. The header title for the `b` row is just the letter `b`. 
 
 - tap the `a` row again. 
 
@@ -66,13 +62,4 @@ That's pretty messed up. It looks like it's trying to fit the label into the wid
 - Swipe up to force the header to reload. That fixes it. 
 
 ### Workaround
-One workaround that might work in most cases is to set the label's `numberOfLines` attribute.
-
-    func updateHeader(with title: String) {
-        guard let headerView = tableView.headerView(forSection: 0), let label = headerView.textLabel else {return}
-        headerTitle = title
-        label.text = headerTitle
-        label.sizeToFit()
-        label.numberOfLines = 1 // add this
-     }
-
+One workaround that might work in most cases is to set the label's `numberOfLines` attribute. Uncomment the `numberOfLines` line and run again.
