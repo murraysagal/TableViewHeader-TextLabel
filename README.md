@@ -1,5 +1,5 @@
 # TableViewHeader-TextLabel
-Shows how to access a UITableViewHeaderFooterView and its textLabel attribute and what can go wrong. The problems demonstrated in this app are as of iOS 12.1.4, Xcode 10.1, and Swift 4.2. 
+Shows how to access a `UITableViewHeaderFooterView` and its `textLabel` attribute and what can go wrong. The problems demonstrated in this app are as of iOS 12.1.4, Xcode 10.1, and Swift 4.2. 
 
 ### Description
 It's easy to access a header view from a table view and to dynamically change the text. Here's a snippet: 
