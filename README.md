@@ -2,7 +2,7 @@
 Shows how to access a UITableViewHeaderFooterView and its textLabel attribute and what can go wrong. The problems demonstrated in this app are as of iOS 12.1.4, Xcode 10.1, and Swift 4.2. 
 
 ### Description
-It's easy to acces a header view from a table view and to dynamically change the text. Here's a snippet: 
+It's easy to access a header view from a table view and to dynamically change the text. Here's a snippet: 
 
     guard let headerView = tableView.headerView(forSection: section), let label = headerView.textLabel else {return}
     label.text = "Here's a new header title"
@@ -23,14 +23,17 @@ Run the app and you'll see a table view with a header and footer.
 
 - tap the a row
 
-There are two immediate problems...
+There are two obvious problems...
 
 1. The text is truncated. It appears to be truncated at exactly the length of the default header.
 1. The text is lowercase.
+1. The other problem is that the header title for a is actually two lines. 
+
+- swipe up to force the header to reload. That's how it should look.
 
 - tap the b row
 
-This works because the title is shorter than the original. 
+This works because the title is shorter than the original. But notice that it's sitting really high. 
 
 - tap the c row
 - swipe up to force the header to reload. 
