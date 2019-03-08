@@ -12,7 +12,7 @@ class ViewController: UITableViewController {
 
 
     let model = "abcde".map {return String($0)}
-    let headerTitles = ["a is for apple" + "\n" + "a really big apple", "b", "c is for car", "d", "e is for everywhere"]
+    let headerTitles = ["a is for apple" + "\n" + "a multiline apple", "b", "c is for can you please fix this", "d is for dumb", "e is for eagerly awaiting"]
     let defaultHeaderTitle = "header"
     lazy var headerTitle = defaultHeaderTitle
 
@@ -50,6 +50,8 @@ class ViewController: UITableViewController {
         guard let headerView = tableView.headerView(forSection: 0), let label = headerView.textLabel else {return}
         headerTitle = title
         label.text = headerTitle
+//        label.sizeToFit()
+//        label.numberOfLines = 1
     }
 
     @objc func reset() {
