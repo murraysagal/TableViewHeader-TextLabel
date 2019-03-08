@@ -21,21 +21,21 @@ If you want to see the issues first-hand clone this repo and run on your device 
 
 Run the app and you'll see a table view with a header and footer. 
 
-- tap the a row
+- tap the `a` row
 
 There are two obvious problems...
 
 1. The text is truncated. It appears to be truncated at exactly the length of the default header.
 1. The text is lowercase.
-1. The other problem is that the header title for a is actually two lines. 
+1. The other problem is that the header title for `a` is actually two lines. 
 
 - swipe up to force the header to reload. That's how it should look.
 
-- tap the b row
+- tap the `b` row
 
 This works because the title is shorter than the original. But notice that it's sitting really high. 
 
-- tap the c row
+- tap the `c` row
 - swipe up to force the header to reload. 
 
 Now we have what is expected. 
@@ -51,19 +51,28 @@ Change `updateHeaderTitle`:
         label.sizeToFit()  // add this line
      }
 
-- run the app and tap on the a row
+- run the app and tap on the `a` row
 
 That's worse. Again, it seems like the label's width is stuck to the original. 
 
-- tap the b row
+- tap the `b` row
 
 That's fine.
 
-- tap the a row again. 
+- tap the `a` row again. 
 
 That's pretty messed up. It looks like it's trying to fit the label into the width of the last header title. 
 
-- Swipe up to force the header to reload. That's fixes it. 
+- Swipe up to force the header to reload. That fixes it. 
 
 ### Workaround
-One that might work for many
+One workaround that might work in most cases is to set the label's `numberOfLines` attribute.
+
+    func updateHeader(with title: String) {
+        guard let headerView = tableView.headerView(forSection: 0), let label = headerView.textLabel else {return}
+        headerTitle = title
+        label.text = headerTitle
+        label.sizeToFit()
+        label.numberOfLines = 1 // add this
+     }
+
